@@ -2,11 +2,11 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import reducer from './reduce';
 
-const composeEnhacer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; //Esta línea es para conectar con la extensión del navegador => REDUX DEVTOOLS
-
+// Crea el almacenamiento de Redux, pasando el reducer y aplicando el middleware thunk
 const store = createStore(
     reducer,
-    composeEnhacer(applyMiddleware(thunk)) //Esta línea es para poder hacer peticiones a un server
+    applyMiddleware(thunk)
 );
 
+// Exporta el almacenamiento para que pueda ser utilizado en otros lugares de la aplicación
 export default store;
